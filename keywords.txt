@@ -1,0 +1,8 @@
+BlinkLed	KEYWORD1
+setMode		KEYWORD2
+setCount	KEYWORD2
+setInterval	KEYWORD2
+loop		KEYWORD2
+kBlinkBreath	LITERAL1
+kBlinkMultiple	LITERAL1
+kBlinkSingle	LITERAL1
