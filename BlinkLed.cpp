@@ -26,8 +26,14 @@
 
 #include "BlinkLed.h"
 
-BlinkLed::BlinkLed(uint8_t pin) {
+BlinkLed::BlinkLed(uint8_t pin) : BlinkLed(pin, LOW, HIGH) {
+	
+}
+
+BlinkLed::BlinkLed(uint8_t pin, uint8_t lo, uint8_t hi) {
 	m_pin = pin;
+	m_lo = lo;
+	m_hi = hi;
 	m_count = 0;
 	m_interval = 0UL;
 	pinMode(m_pin, OUTPUT);
@@ -54,13 +60,13 @@ void BlinkLed::loop(void) {
 	if ((millis() - previousMillis) > interval) {
 		switch (m_mode) {
 			case kBlinkSingle:			
-				digitalWrite(m_pin, digitalRead(m_pin) == HIGH ? LOW : HIGH);
+				digitalWrite(m_pin, digitalRead(m_pin) == m_hi ? m_lo : m_hi);
 				interval = m_interval;
 				break;
 			case kBlinkMultiple:
-				if (digitalRead(m_pin) == LOW) {
+				if (digitalRead(m_pin) == m_lo) {
 					if (count > 0) {
-						digitalWrite(m_pin, HIGH);
+						digitalWrite(m_pin, m_hi);
 						interval = 100UL;
 						count--;
 					} else {
@@ -68,7 +74,7 @@ void BlinkLed::loop(void) {
 						count = m_count;
 					}
 				} else {
-					digitalWrite(m_pin, LOW);
+					digitalWrite(m_pin, m_lo);
 					interval = 250UL;
 				}				
 				break;
@@ -91,8 +97,5 @@ void BlinkLed::loop(void) {
 		}
 		previousMillis = millis();
 	}
-
-		
-	
 			
 }
