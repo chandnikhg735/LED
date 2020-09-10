@@ -43,7 +43,8 @@ enum BlinkMode {
 class BlinkLed {
 	public:
 		BlinkLed(uint8_t pin);
-		BlinkLed(uint8_t pin, uint8_t lo, uint8_t hi);
+		BlinkLed(uint8_t pin, uint32_t interval);
+		BlinkLed(uint8_t pin, uint32_t interval, uint8_t lo, uint8_t hi);
 		void setMode(BlinkMode mode);
 		void setCount(uint8_t count);
 		void setInterval(uint32_t interval);

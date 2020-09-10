@@ -26,16 +26,17 @@
 
 #include "BlinkLed.h"
 
-BlinkLed::BlinkLed(uint8_t pin) : BlinkLed(pin, LOW, HIGH) {
-	
-}
+BlinkLed::BlinkLed(uint8_t pin) : BlinkLed(pin, 500UL, LOW, HIGH) {}
 
-BlinkLed::BlinkLed(uint8_t pin, uint8_t lo, uint8_t hi) {
+BlinkLed::BlinkLed(uint8_t pin, uint32_t interval) : BlinkLed(pin, interval, LOW, HIGH) {}
+
+BlinkLed::BlinkLed(uint8_t pin, uint32_t interval, uint8_t lo, uint8_t hi) {
 	m_pin = pin;
 	m_lo = lo;
 	m_hi = hi;
 	m_count = 0;
-	m_interval = 0UL;
+	m_interval = interval;
+	m_mode = kBlinkSingle;
 	pinMode(m_pin, OUTPUT);
 }
 
