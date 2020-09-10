@@ -79,7 +79,11 @@ void BlinkLed::loop(void) {
 				}				
 				break;
 			case kBlinkBreath:
+				#if defined(ARDUINO_ARCH_ESP32)
+				ledcWrite(m_pin, count);
+				#else
 				analogWrite(m_pin, count);
+				#endif
 				if (state) {
 					if (count == 255) {
 						state = false;
