@@ -1,9 +1,9 @@
 /************************************************************************************
  * 
- * Name    : BlinkLed.h
+ * Name    : LED.h
  * Author  : Mark Reds <marco@markreds.it>
  * Date    : September 8, 2020
- * Version : 0.1
+ * Version : 1.0.0
  * Notes   : An Arduno library to drive status led in multiple modes to aid in multitasking.
  * 
  * Copyright (c) 2020 Mark Reds.  All right reserved.
@@ -24,8 +24,8 @@
  * 
  ************************************************************************************/
 
-#ifndef BlinkLed_h
-#define BlinkLed_h
+#ifndef LED_h
+#define LED_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include <Arduino.h>
@@ -34,28 +34,35 @@
 #include "pins_arduino.h"
 #endif
 
-enum BlinkMode {
-	kBlinkSingle,
-	kBlinkMultiple,
-	kBlinkBreath
+enum ledstate_t {
+	kSwitchOff,
+	kSwitchOn,
+	kBlinkOn,
+	kBlinkOff,
+	kBlinkPause,
+	kBreathIn,
+	kBreathOut
 };
 
-class BlinkLed {
-	public:
-		BlinkLed(uint8_t pin);
-		BlinkLed(uint8_t pin, uint32_t interval);
-		BlinkLed(uint8_t pin, uint32_t interval, uint8_t lo, uint8_t hi);
-		void setMode(BlinkMode mode);
-		void setCount(uint8_t count);
-		void setInterval(uint32_t interval);
-		void loop(void);
+class LED {
 	private:
 		uint8_t m_pin;
 		uint8_t m_lo;
 		uint8_t m_hi;
 		uint8_t m_count;
+		uint32_t m_start;
 		uint32_t m_interval;
-		BlinkMode m_mode;
+		ledstate_t m_state;
+	public:
+		LED(uint8_t pin);
+		LED(uint8_t pin, uint8_t lo, uint8_t hi);
+		virtual ~LED();
+		void on(void);
+		void off(void);
+		void blink(uint32_t interval);
+		void blink(uint8_t count, uint32_t pause, uint32_t timeOn = 180UL, uint32_t timeOff = 120UL);
+		void breath(uint32_t interval);
+		inline uint8_t state(void) { return m_state; }
 };
 
 #endif
