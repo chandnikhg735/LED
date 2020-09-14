@@ -1,7 +1,7 @@
 # LED
-An Arduno library to drive a led in multiple modes to aid in multitasking.
+This library allows an Arduino board to control LEDs.
 
-LED creates a led object that can be turned on and off within a sketch and the library takes care of the blinking or breathing in the background.
+A LED object has many useful methods to make it blinking or breathing in non blocking mode.
 
 ## Example
 
@@ -72,3 +72,20 @@ Return the current state of the LED object. It could be one of the following val
 ## Installation
 
 To install, download the .zip file: https://github.com/markreds81/LED/archive/master.zip and rename the *LED-master* folder to *LED*.  Move the *LED* folder to your *Arduino/libraries* folder and restart the Arduino IDE.  This library should work on Arduino IDE v1.5 and later.
+
+## License
+
+Copyright (C) 2020 Marco Rossi (aka Mark Reds).  All right reserved.
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library. If not, see <http://www.gnu.org/licenses/>.

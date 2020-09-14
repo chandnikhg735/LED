@@ -1,26 +1,28 @@
 /************************************************************************************
  * 
- * Name    : LED.cpp
+ * Name    : LED
+ * File    : LED.cpp
  * Author  : Mark Reds <marco@markreds.it>
  * Date    : September 8, 2020
  * Version : 1.0.0
- * Notes   : An Arduno library to drive status led in multiple modes to aid in multitasking.
+ * Notes   : This library allows an Arduino board to control LEDs.
  * 
- * Copyright (c) 2020 Mark Reds.  All right reserved.
+ * Copyright (C) 2020 Marco Rossi (aka Mark Reds).  All right reserved.
  * 
- * 
- * BlinkLed is free software: you can redistribute it and/or modify
+ * This file is part of LED.
+ *
+ * LED is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * BlinkLed is distributed in the hope that it will be useful,
+ * LED is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with BlinkLed.  If not, see <http://www.gnu.org/licenses/>.
+ * along with LED. If not, see <http://www.gnu.org/licenses/>.
  * 
  ************************************************************************************/
 
