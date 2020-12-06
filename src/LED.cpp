@@ -33,8 +33,7 @@ LED::LED(const uint8_t pin) : LED(pin, LOW, HIGH) { }
 LED::LED(const uint8_t pin, const uint8_t lo, const uint8_t hi) :
 	m_pin(pin),
 	m_lo(lo),
-	m_hi(hi)
-{
+	m_hi(hi) {
 	m_count = 0;
 	m_interval = 0;
 	pinMode(m_pin, OUTPUT);
