@@ -1,4 +1,4 @@
-# LED
+# mrLED
 This library allows an Arduino board to control LEDs.
 
 A LED object has many useful methods to make it blinking or breathing in non blocking mode.

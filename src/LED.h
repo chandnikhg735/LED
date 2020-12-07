@@ -1,6 +1,6 @@
 /************************************************************************************
  * 
- * Name    : LED
+ * Name    : mrLED
  * File    : LED.h
  * Author  : Mark Reds <marco@markreds.it>
  * Date    : September 8, 2020
@@ -9,7 +9,7 @@
  * 
  * Copyright (C) 2020 Marco Rossi (aka Mark Reds).  All right reserved.
  * 
- * This file is part of LED.
+ * This file is part of mrLED.
  * 
  * LED is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
