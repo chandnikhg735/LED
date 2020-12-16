@@ -11,18 +11,18 @@
  * 
  * This file is part of mrLED.
  *
- * LED is free software: you can redistribute it and/or modify
+ * mrLED is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
- * LED is distributed in the hope that it will be useful,
+ * mrLED is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
- * along with LED. If not, see <http://www.gnu.org/licenses/>.
+ * along with mrLED. If not, see <http://www.gnu.org/licenses/>.
  * 
  ************************************************************************************/
 
@@ -72,7 +72,30 @@ void LED::blink(uint32_t interval) {
 	}
 }
 
-void LED::blink(uint8_t count, uint32_t pause, uint32_t timeOn, uint32_t timeOff) {
+void LED::blink(uint32_t interval, uint32_t duration) {
+	switch (m_state) {
+		case kBlinkOn:
+			if ((millis() - m_start) > duration) {
+				digitalWrite(m_pin, m_lo);
+				m_state = kBlinkOff;
+				m_start = millis();
+			}
+			break;
+		case kBlinkOff:
+			if ((millis() - m_start) > interval) {
+				digitalWrite(m_pin, m_hi);
+				m_state = kBlinkOn;
+				m_start = millis();
+			}
+			break;
+		default:
+			digitalWrite(m_pin, m_hi);
+			m_state = kBlinkOn;
+			m_start = millis();
+	}
+}
+
+void LED::flash(uint8_t count, uint32_t pause, uint32_t timeOn, uint32_t timeOff) {
 	if ((millis() - m_start) > m_interval) {
 		switch (m_state) {
 			case kBlinkOff:
