@@ -59,13 +59,15 @@ class LED {
 		LED(uint8_t pin);
 		LED(uint8_t pin, uint8_t lo, uint8_t hi);
 		virtual ~LED();
-		void on(void);
-		void off(void);
+		inline void begin() { pinMode(m_pin, OUTPUT); }
+		void on();
+		void off();
+		void toggle();
 		void blink(uint32_t interval);
 		void blink(uint32_t interval, uint32_t duration);
 		void flash(uint8_t count, uint32_t pause, uint32_t timeOn = 180UL, uint32_t timeOff = 120UL);
 		void breath(uint32_t interval);
-		inline uint8_t state(void) { return m_state; }
+		inline uint8_t state() { return m_state; }
 };
 
 #endif

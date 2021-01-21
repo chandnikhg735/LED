@@ -36,21 +36,30 @@ LED::LED(const uint8_t pin, const uint8_t lo, const uint8_t hi) :
 	m_hi(hi) {
 	m_count = 0;
 	m_interval = 0;
-	pinMode(m_pin, OUTPUT);
 }
 
 LED::~LED() {
 
 }
 
-void LED::on(void) {
+void LED::on() {
 	digitalWrite(m_pin, m_hi);
 	m_state = kSwitchOn;
 }
 
-void LED::off(void) {
+void LED::off() {
 	digitalWrite(m_pin, m_lo);
 	m_state = kSwitchOff;
+}
+
+void LED::toggle() {
+	if (m_state == kSwitchOn) {
+		digitalWrite(m_pin, m_lo);
+		m_state = kSwitchOff;
+	} else {
+		digitalWrite(m_pin, m_hi);
+		m_state = kSwitchOn;
+	}
 }
 
 void LED::blink(uint32_t interval) {
