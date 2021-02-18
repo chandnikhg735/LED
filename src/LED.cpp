@@ -4,7 +4,7 @@
  * File    : LED.cpp
  * Author  : Mark Reds <marco@markreds.it>
  * Date    : September 8, 2020
- * Version : 1.0.0
+ * Version : 1.0.2
  * Notes   : This library allows an Arduino board to control LEDs.
  * 
  * Copyright (C) 2020 Marco Rossi (aka Mark Reds).  All right reserved.
@@ -135,6 +135,12 @@ void LED::flash(uint8_t count, uint32_t pause, uint32_t timeOn, uint32_t timeOff
 				m_count = count;
 		}
 	}
+}
+
+void LED::reset() {
+	digitalWrite(m_port, m_pin, m_lo);
+	m_state = kBlinkOff;
+	m_start = millis();
 }
 
 void LED::breath(uint32_t interval) {

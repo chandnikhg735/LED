@@ -4,7 +4,7 @@
  * File    : LED.h
  * Author  : Mark Reds <marco@markreds.it>
  * Date    : September 8, 2020
- * Version : 1.0.0
+ * Version : 1.0.2
  * Notes   : This library allows an Arduino board to control LEDs.
  * 
  * Copyright (C) 2020 Marco Rossi (aka Mark Reds).  All right reserved.
@@ -66,8 +66,9 @@ class LED {
 		void blink(uint32_t interval);
 		void blink(uint32_t interval, uint32_t duration);
 		void flash(uint8_t count, uint32_t pause, uint32_t timeOn = 180UL, uint32_t timeOff = 120UL);
+		void reset();
 		void breath(uint32_t interval);
-		inline uint8_t state() { return m_state; }
+		inline ledstate_t state() { return m_state; }
 };
 
 #endif
