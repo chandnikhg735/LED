@@ -138,7 +138,7 @@ void LED::flash(uint8_t count, uint32_t pause, uint32_t timeOn, uint32_t timeOff
 }
 
 void LED::reset() {
-	digitalWrite(m_port, m_pin, m_lo);
+	digitalWrite(m_pin, m_lo);
 	m_state = kBlinkOff;
 	m_start = millis();
 }
