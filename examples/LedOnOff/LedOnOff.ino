@@ -9,7 +9,7 @@
 
 #include <LED.h>
 
-LED led(11);
+LED led(LED_BUILTIN);
 
 void setup() {
 	
